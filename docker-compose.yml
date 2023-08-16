@@ -12,9 +12,10 @@ services:
       - 3306:3306
     volumes:
       - ./mysql/data:/var/lib/mysql
+      - ./scripts:/scripts  
 
   php-apache:
-    container_name: php-apache
+    container_name: ck4php-apache
     build:
       context: .
       dockerfile: Dockerfile
@@ -22,7 +23,8 @@ services:
     ports:
       - "80:80"
     volumes:
-      - /opt/sites/:/var/www/html/
+      #- /opt/sites/:/var/www/html/
+      - /opt/sites/form-podcast/www/:/var/www/html/
 
 networks:
   default:
